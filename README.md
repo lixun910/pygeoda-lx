@@ -81,6 +81,7 @@ lisa = pygeoda.local_moran(w, gda['Crm_prs'])
     
 * Local Indicators of Spatial Association (LISA)
     * Local Moran
+    * Bivariate Local Moran
     * Local Geary
     * Local Getis-Ord 
     * Local Join Count
@@ -112,6 +113,8 @@ lisa = pygeoda.local_moran(w, gda['Crm_prs'])
       * greedy
       * Tabu Search
       * Simulated Annealing
+    * Spatial Validation
+    * Make Spatial
       
 * Map Classification
    * NaturalBreaks

@@ -20,6 +20,7 @@ jobs:
           - 3.7
           - 3.8
           - 3.9
+          - 3.10
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -27,15 +28,15 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Setup for Python 3.9
-        if: "contains(matrix.python_ver, '3.9')"
+      - name: Setup for Python 3.9, 3.10
+        if: "contains(matrix.python_ver, '3.9') || contains(matrix.python_ver, '3.10')"
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: ${{ matrix.msvc_arch }}
           toolset: 14.2
 
       - name: Setup for Python 3.6, 3.7, 3.8
-        if: "!contains(matrix.python_ver, '3.9')"
+        if: "!contains(matrix.python_ver, '3.9') && !contains(matrix.python_ver, '3.10')"
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: ${{ matrix.msvc_arch }}
