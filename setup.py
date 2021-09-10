@@ -59,10 +59,6 @@ if OS_NAME == 'linux':
 elif OS_NAME == 'osx':
     LIBRARY_DIRS += ['/usr/lib']
     LIBRARIES = []
-elif OS_NAME == 'win32':
-    LIBRARY_DIRS += ['.\\boost\\lib\\win32']
-elif OS_NAME == 'win64':
-    LIBRARY_DIRS += ['.\\boost\\lib\\win64']
 
 ###########################################################
 # SWIG_OPTS and Compiler args
@@ -115,11 +111,13 @@ if OS_NAME == 'win32' or OS_NAME == 'win64':
     elif pyversion in ['3.6', '3.7', '3.8']:
         MSVC_VER = 'vc141'
     elif pyversion in ['3.9']:
-        MSVC_VER = 'vc142'
-
-
+        MSVC_VER = 'vc141'
 
     EXTRA_OBJECTS = [
+        '.\\boost\\lib\\' + OS_NAME + '\\libboost_thread-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
+        '.\\boost\\lib\\' + OS_NAME + '\\libboost_system-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
+        '.\\boost\\lib\\' + OS_NAME + '\\libboost_date_time-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib',
+        '.\\boost\\lib\\' + OS_NAME + '\\libboost_chrono-' + MSVC_VER+ '-mt-' + BOOST_ARC + '-' + BOOST_VER + '.lib', 
     ]
 else:
     EXTRA_OBJECTS = [
